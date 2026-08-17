@@ -37,12 +37,22 @@ KEYWORDS_CARGO_FORTE = [
     "Analytics Specialist",
     "Especialista em Dados",
     "Analista de Planejamento e Dados",
+    "Analista de Suporte",
+    "Analista de Suporte Técnico",
+    "Suporte Técnico",
+    "Help Desk",
+    "Service Desk",
+    "Analista de Infraestrutura",
+    "Suporte de TI",
+    "Suporte Nível 1",
+    "Suporte Nível 2",
+    "Technical Support Analyst",
+    "Assistente de Suporte de TI",
+    "Auxiliar de Suporte",
     # "Datos" (espanhol) não é "Dados" (português) — nenhuma keyword em
     # português cobre título em espanhol, mesmo sendo a mesma vaga. Faz
     # sentido aqui no pipeline BR (não só em config_intl.py) porque
     # LinkedInScraper já busca em Argentina/Chile (ver LOCATIONS_LINKEDIN).
-    "Analista de Datos",
-    "Analítica de Datos",
 ]
 
 # Cargo ambíguo: título que também é usado em vaga sem nada a ver com
@@ -52,10 +62,15 @@ KEYWORDS_CARGO_FORTE = [
 # adicionando cargo adjacente (Product Analyst, CRM Analyst, Marketing
 # Analyst etc.) sem cada um virar fonte de ruído sozinho.
 KEYWORDS_CARGO_AMBIGUO = [
-    "Business Analyst",
-    "Analista de Negócios",
-    "Business Analytics",
-    "Analista de Performance",
+    "Analista",
+    "Técnico",
+    "Assistente",
+    "Atendente",
+    "Auxiliar",
+    "Especialista",
+    "Consultor",
+    "Estágio",
+    "Estagiário"
 ]
 
 # Termo que precisa aparecer junto no título quando o cargo é ambíguo, pra
@@ -72,6 +87,20 @@ QUALIFICADORES_DADOS = [
     "métricas",
     "reporting",
     "insights",
+    "suporte",
+    "ti",
+    "tecnologia da informação",
+    "help desk",
+    "service desk",
+    "infraestrutura",
+    "redes",
+    "sistemas",
+    "informática",
+    "hardware",
+    "software",
+    "sla",
+    "computadores",
+    "atendimento técnico"
 ]
 
 # Ferramenta que aparece como núcleo do título ("Analista de Power BI").
@@ -82,6 +111,15 @@ QUALIFICADORES_DADOS = [
 # que são vaga de desenvolvimento, não de análise.
 FERRAMENTAS_TITULO = [
     "Power BI",
+    "ServiceNow",
+    "Jira",
+    "Office 365",
+    "Microsoft 365",
+    "Windows",
+    "Linux",
+    "Infraestrutura",
+    "Redes",
+    "Active Directory",
 ]
 
 # Palavra de cargo que confirma que a vaga de ferramenta é de análise.
@@ -94,6 +132,16 @@ QUALIFICADORES_CARGO = [
     "specialist",
     "consultor",
     "consultant",
+    "analista",
+    "analyst",
+    "técnico",
+    "tecnico",
+    "suporte",
+    "assistente",
+    "auxiliar",
+    "atendente",
+    "especialista",
+    "specialist",
 ]
 
 KEYWORDS = KEYWORDS_CARGO_FORTE + KEYWORDS_CARGO_AMBIGUO
@@ -118,6 +166,11 @@ TERMOS_CARGO_EXTRA = [
     # não gerar falso positivo no filtro de título).
     "power bi",
     "inteligência de mercado",
+    "suporte técnico",
+    "help desk",
+    "service desk",
+    "infraestrutura de ti",
+    "suporte ti",
 ]
 
 TERMOS_CARGO = sorted(set(k.lower() for k in KEYWORDS) | set(TERMOS_CARGO_EXTRA))
@@ -139,6 +192,14 @@ TERMOS_FERRAMENTA = [
     "qlik",
     "looker",
     "bigquery",
+    "active directory",
+    "zendesk",
+    "windows server",
+    "linux",
+    "office 365",
+    "jira",
+    "hardware",
+    "redes",
 ]
 
 TERMOS_BUSCA = TERMOS_CARGO + TERMOS_FERRAMENTA
@@ -156,17 +217,9 @@ TERMOS_POR_CICLO = 10
 
 CIDADES = [
     "Remoto",
-    "Campina Grande",
-    "João Pessoa",
-    "Recife",
-    "Natal",
-    "Maceió",
-    "Jaboatão",
-    "Aracaju",
-    "Teresina",
-    "São Luís",
-    "Petrolina",
-    "Caruaru",
+    "Uberlândia",
+    "Minas Gerais",
+
 ]
 
 # MEDIDO: "Data Analyst @ Lisboa" e "Analista de Datos @ Madrid" reprovavam
@@ -224,7 +277,7 @@ LOCATIONS_LINKEDIN = ["Brasil"]
 # (LOCATIONS_INTL) — evita arriscar nome de país nunca testado (grafia
 # errada ou região que o LinkedIn não resolve como location de verdade,
 # como já visto com "LATAM"/"Latin America").
-LOCATIONS_LINKEDIN_REMOTO_APENAS = ["Argentina", "Chile", "México", "Colômbia", "Espanha", "Portugal"]
+LOCATIONS_LINKEDIN_REMOTO_APENAS = []
 
 # Mercado que a vaga remota precisa aceitar pra contar, quando o texto de
 # local DECLARA um escopo geográfico ("Remote — US only", "Remote — India").
@@ -246,7 +299,7 @@ LOCATIONS_LINKEDIN_REMOTO_APENAS = ["Argentina", "Chile", "México", "Colômbia"
 # quando o texto disser isso literalmente (guarda-chuva de verdade, não
 # substituto de nome de país). Portugal e Espanha entraram nominalmente
 # pelo mesmo motivo, desde antes.
-MERCADOS_REMOTO_ACEITOS = ["Brasil", "LATAM", "Argentina", "Chile", "México", "Colômbia", "Portugal", "Espanha"]
+MERCADOS_REMOTO_ACEITOS = ["Brasil"]
 
 INTERVALO_MINUTOS = int(os.getenv("INTERVALO_MINUTOS", 180))
 
